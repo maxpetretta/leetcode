@@ -2,7 +2,7 @@ from typing import List
 
 class Solution:
     def findMin(self, nums: List[int]) -> int:
-        # Brute force, O(n)
+        # Brute force, O(n), O(1)
         # length = len(nums)
         # minimum = nums[0]
         # for i in range(1, length):
@@ -10,7 +10,7 @@ class Solution:
         # return minimum
     
         
-        # Binary search, O(log n)
+        # Binary search, O(log n), O(1)
         def binSearch(nums, start, end):
             mid = start + (end - start) // 2
             if nums[mid] > nums[mid + 1]:

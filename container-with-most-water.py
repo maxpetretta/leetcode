@@ -2,7 +2,7 @@ from typing import List
 
 class Solution:
     def maxArea(self, height: List[int]) -> int:
-        # Brute force, O(n^2)
+        # Brute force, O(n^2), O(1)
         # maxWater = 0
         # for i, h1 in enumerate(height):
         #     for j, h2 in enumerate(height[i+1:], start=i+1):
@@ -12,7 +12,7 @@ class Solution:
         # return maxWater
     
     
-        # Two pointer method, O(n)
+        # Two pointer method, O(n), O(1)
         start = 0
         end = len(height) - 1
         maxWater = 0

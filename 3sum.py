@@ -2,7 +2,7 @@ from typing import List
 
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        # Two pointers method, O(n^2)
+        # Two pointers method, O(n^2), O(n)
         # def twoSum(nums, i, triplets):
         #     low = i + 1
         #     high = len(nums) - 1
@@ -33,7 +33,7 @@ class Solution:
         # return triplets
         
         
-        # Use a hashtable to store compliments, O(n^2)
+        # Use a hashtable to store compliments, O(n^2), O(n)
         # def twoSum(nums, i, triplets):
         #     values = set()
         #     j = i + 1
@@ -58,7 +58,7 @@ class Solution:
         # return triplets
         
 
-        # Use a hashmap without sorting the array first, O(n^2)
+        # Use a hashmap without sorting the array first, O(n^2), O(n)
         triplets, duplicates = set(), set()
         values = {}
         

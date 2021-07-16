@@ -2,7 +2,7 @@ from typing import List
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        # Brute force, O(n)
+        # Brute force, O(n), O(1)
         # index = -1
         # for i in range(len(nums)):
         #     if nums[i] == target:
@@ -10,7 +10,7 @@ class Solution:
         # return index
     
     
-        # Binary search, O(log n)
+        # Binary search, O(log n), O(1)
         def binSearch(nums, target, start, end):
             mid = start + (end - start) // 2
             if nums[mid] == target:

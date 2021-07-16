@@ -2,7 +2,7 @@ from typing import List
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        # Brute force, O(n^2)
+        # Brute force, O(n^2), O(1)
         # profit = 0
         # for i, buy in enumerate(prices):
         #     for j, sell in enumerate(prices[i:]):
@@ -11,7 +11,7 @@ class Solution:
         # return profit
         
         
-        # Calculate profit while traversing list, O(n)
+        # Calculate profit while traversing list, O(n), O(1)
         profit = 0
         last_min = 0
         for i, price in enumerate(prices):

@@ -1,7 +1,7 @@
 from typing import List
 
 class Solution:
-    # Brute force, O(n^2)
+    # Brute force, O(n^2), O(1)
     # def twoSum(self, nums: List[int], target: int) -> List[int]:
     #     for i, numA in enumerate(nums):
     #         for j, numB in enumerate(nums):
@@ -11,7 +11,7 @@ class Solution:
     #                 return [i, j]
 
 
-    # Do not check sum of previously visited combinations, O(n^2)
+    # Do not check sum of previously visited combinations, O(n^2), O(1)
     # def twoSum(self, nums: List[int], target: int) -> List[int]:
     #     runs = 0
     #     for i, numA in enumerate(nums):
@@ -25,7 +25,7 @@ class Solution:
     #         runs += 1
         
         
-    # Build a hashmap of compliments, O(n)
+    # Build a hashmap of compliments, O(n), O(n)
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         complements = {}
         for i, num in enumerate(nums):

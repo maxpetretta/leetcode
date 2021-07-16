@@ -2,7 +2,7 @@ from typing import List
 
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        # Brute force, O(n^3)
+        # Brute force, O(n^3), O(1)
         # length = len(nums)
         # total = sum(nums)
         # for size in reversed(range(1, length + 1)):
@@ -13,7 +13,7 @@ class Solution:
         # return total
         
         
-        # Do not revisit past prefixes, O(n^2)
+        # Do not revisit past prefixes, O(n^2), O(1)
         # length = len(nums)
         # total = sum(nums)
         # for i in range(length):
@@ -25,7 +25,7 @@ class Solution:
         # return total
         
 
-        # Divide and conquer, O(n log n)
+        # Divide and conquer, O(n log n), O(log n)
         # def bestSubArray(nums: List[int], left: int, right: int) -> List[int]:
         #     if left > right:
         #         return -math.inf
@@ -57,7 +57,7 @@ class Solution:
         
         
         # Scan left to right, reseting when the current subarray is negative
-        # Known as Kadane's algorithm, O(n)
+        # Known as Kadane's algorithm, O(n), O(1)
         length = len(nums)
         current = nums[0]
         maximum = nums[0]

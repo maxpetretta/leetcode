@@ -1,5 +1,3 @@
-
-
 class Solution:
     def numDecodings(self, s: str) -> int:
         # Brute force, O(2 ^ n), O(n)

@@ -2,7 +2,7 @@ from typing import List
 
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        # Brute force, O(n^2)
+        # Brute force, O(n^2), O(n)
         # answer = [1] * len(nums)
         # for i, numA in enumerate(nums):
         #     for j, numB in enumerate(nums):
@@ -13,7 +13,7 @@ class Solution:
         # return answer
         
         
-        # Compute products on the left and right sides of the index, O(n)
+        # Compute products on the left and right sides of the index, O(n), O(n)
         # length = len(nums)
         # left, right, answer = [1] * length, [1] * length, [1] * length
         # for i in range(1, length):
@@ -25,7 +25,7 @@ class Solution:
         # return answer
         
         
-        # Use the left/right method, but in constant space, O(n)
+        # Use the left/right method, but in constant space, O(n), O(1)
         length = len(nums)
         answer = [1] * length
         right = 1

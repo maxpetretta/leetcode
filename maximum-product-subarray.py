@@ -3,7 +3,7 @@ from typing import List
 
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
-        # Brute force, O(n^3)
+        # Brute force, O(n^3), O(1)
         # length = len(nums)
         # total = -math.inf
         # for size in range(1, length + 1):
@@ -13,7 +13,7 @@ class Solution:
         # return total
                 
         
-        # Calculate products in one pass, O(n^2)
+        # Calculate products in one pass, O(n^2), O(1)
         # length = len(nums)
         # total = math.prod(nums)
         # if total > 0:
@@ -26,7 +26,7 @@ class Solution:
         # return total
         
         
-        # Keep track of product chains (positive and negative), O(n)
+        # Keep track of product chains (positive and negative), O(n), O(1)
         length = len(nums)
         total = math.prod(nums)
         if total > 0:
