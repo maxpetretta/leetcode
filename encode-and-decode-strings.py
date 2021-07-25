@@ -21,7 +21,7 @@ class Codec:
     
     
     # Map the strings to a lookup dictionary, O(n), O(n) but likely smaller
-    def encode(self, strs: [str]) -> str:
+    def encode(self, strs: List[str]) -> str:
         """Encodes a list of strings to a single string.
         """
         words = {}
@@ -43,7 +43,7 @@ class Codec:
         return encoded_string[:-1]
         
 
-    def decode(self, s: str) -> [str]:
+    def decode(self, s: str) -> List[str]:
         """Decodes a single string to a list of strings.
         """
         words = {}
