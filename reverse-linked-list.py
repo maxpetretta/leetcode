@@ -29,8 +29,6 @@ class Solution:
 
 
 # Testcases
-if __name__ == "__main__":
-    solver = Solution()
-    print(solver.reverseList(head=[1,2,3,4,5]))
-    print(solver.reverseList(head=[1,2]))
-    print(solver.reverseList(head=[]))
+# [1,2,3,4,5]
+# [1,2]
+# []
