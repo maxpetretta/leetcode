@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         # Brute force, O(n^2), O(1)
@@ -14,6 +15,8 @@ class Solution:
         
         # if len(s) == 0:
         #     return True
+        # else:
+        #     return False
 
 
         # Sort the strings, O(n log n), O(1)
@@ -28,18 +31,18 @@ class Solution:
         #     return False
         
         
-        # Use a hashmap, O(n), O(1) since we are capped to 26 letters
-        map = defaultdict(int)
+        # Use a hashmap to store seen letters, O(n), O(1) since we are capped to 26 letters
+        seen = defaultdict(int)
         
         if len(s) != len(t):
             return False
         
         for char in s:
-            map[char] += 1        
+            seen[char] += 1
         for char in t:
-            map[char] -= 1
-        
-        if max(map.values()) > 0:
+            seen[char] -= 1
+            
+        if max(seen.values()) > 0:
             return False
         else:
             return True

@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         # Brute force, O(n^2), O(1)
@@ -23,13 +24,13 @@ class Solution:
         # return False
         
         
-        # Keep track of occurrences while iterating over list, O(n), O(n)
-        occurrences = {}
-        for i, num in enumerate(nums):
-            if num in occurrences:
+        # Keep track of previous occurrences with a set, O(n), O(n)
+        previous = set()
+        for num in nums:
+            if num in previous:
                 return True
             else:
-                occurrences[num] = True
+                previous.add(num)
         return False
 
 

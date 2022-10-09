@@ -2,19 +2,15 @@ class Solution:
     def isValid(self, s: str) -> bool:
         # Keep a stack of open brackets, O(n), O(n)
         stack = []
-        pairs = { ")": "(", "}": "{", "]": "[" }
+        pairs = { ")": "(", "]": "[", "}": "{" }
         
-        for b in s:
-            if len(stack) > 0 and b in pairs:
-                if stack[-1] == pairs[b]:
-                    stack.pop()
-                else:
-                    return False
-            elif b in pairs.values():
-                stack.append(b)
+        for char in s:
+            if char in pairs.values():
+                stack.append(char)
+            elif stack and pairs[char] == stack[-1]:
+                stack.pop()
             else:
                 return False
-
         return stack == []
 
 

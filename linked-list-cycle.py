@@ -6,7 +6,7 @@ class ListNode:
 
 class Solution:
     def hasCycle(self, head: ListNode) -> bool:
-        # Hash map of previous memory addresses, O(n), O(n)
+        # Store a hashmap of seen nodes, O(n), O(n)
         # seen = set()
         
         # while head:
@@ -17,12 +17,13 @@ class Solution:
         # return False
         
         
-        # Two pointer moving at different speeds, O(n), O(1)
+        # Use two pointers moving at different speeds, O(n), O(1)
         # if not head:
         #     return False
         
         # slow, fast = head, head.next
-        # while slow != fast:
+        
+        # while slow is not fast:
         #     if fast is None or fast.next is None:
         #         return False
         #     slow = slow.next

@@ -6,27 +6,24 @@ class ListNode:
 
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
-        # Use recursion, O(n), O(n)
-        # def reverse(node):
-        #     if not node or not node.next:
-        #         return node
-        #     head = reverse(node.next)
-        #     node.next.next = node
-        #     node.next = None
-        #     return head
+        # Reorder while iterating over the list, O(n), O(1)
+        # previous, current = None, head
         
-        # return reverse(head)
-        
-        
-        # Use iteration, O(n), O(1)
-        previous, current = None, head
-        
-        while current:
-            temp = current.next
-            current.next = previous
-            previous = current
-            current = temp
-        return previous
+        # while current:
+        #     temp = current.next
+        #     current.next = previous
+        #     previous = current
+        #     current = temp
+        # return previous
+
+        # Reorder the list recursively, O(n), O(n)
+        if not head or not head.next:
+            return head
+            
+        newHead = self.reverseList(head.next)
+        head.next.next = head
+        head.next = None
+        return newHead
 
 
 # Testcases
