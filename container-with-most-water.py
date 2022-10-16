@@ -1,28 +1,29 @@
 from typing import List
 
+
 class Solution:
     def maxArea(self, height: List[int]) -> int:
-        # Brute force, O(n^2), O(1)
-        # maxWater = 0
-        # for i, h1 in enumerate(height):
-        #     for j, h2 in enumerate(height[i+1:], start=i+1):
-        #         length = j - i
-        #         area = min(h1, h2) * length
-        #         maxWater = max(area, maxWater)
-        # return maxWater
+        # Brute force compare every two heights, O(n^2), O(1)
+        # maximum, length = 0, len(height)
+        # for i in range(length - 1):
+        #     for j in range(i+1, length):
+        #         area = min(height[i], height[j]) * (j - i)
+        #         maximum = max(area, maximum)
+        # return maximum
     
     
-        # Two pointer method, O(n), O(1)
-        start = 0
-        end = len(height) - 1
-        maxWater = 0
-        while start < end:
-            maxWater = max(min(height[start], height[end]) * (end - start), maxWater)
-            if height[start] < height[end]:
-                start += 1
+        # Use left/right pointers moving inwards, O(n), O(1)
+        maximum, length = 0, len(height)
+        left, right = 0, length - 1
+        
+        while left < right:
+            area = min(height[left], height[right]) * (right - left)
+            maximum = max(area, maximum)
+            if height[left] < height[right]:
+                left += 1
             else:
-                end -= 1
-        return maxWater
+                right -= 1
+        return maximum
         
 
 # Testcases

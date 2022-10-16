@@ -1,12 +1,10 @@
 from typing import List
 
+
 class Solution:
     def canAttendMeetings(self, intervals: List[List[int]]) -> bool:
         # Brute force, O(n^2), O(1)
-        # if not intervals:
-        #     return True
         # length = len(intervals)
-        
         # for i in range(length):
         #     for j in range(i+1, length):
         #         # If the later start time occurs before the earlier end time
@@ -15,17 +13,16 @@ class Solution:
         # return True
                 
         
-        # Sort the list by start, O(n log n), O(1)
+        # Sort the list by start time, O(n log n), O(1)
         if not intervals:
             return True
         intervals.sort()
-        prev = intervals[0][1]
+        previous = intervals[0]
         
-        for curr in intervals[1:]:
-            if curr[0] < prev:
+        for interval in intervals[1:]:
+            if interval[0] < previous[1]:
                 return False
-            else:
-                prev = curr[1]
+            previous = interval
         return True
 
 

@@ -1,44 +1,42 @@
 import math
 
+
 class Solution:
     def climbStairs(self, n: int) -> int:
-        # Brute force, O(2 ^ n)
+        # Brute force using recursion, O(2^n), O(n)
         # if n == 1:
         #     return 1
         # elif n == 2:
         #     return 2
-        # else:
-        #     return self.climbStairs(n - 1) + self.climbStairs(n - 2)
+        # return self.climbStairs(n - 1) + self.climbStairs(n - 2)
         
         
-        # Recursive memoization, O(n)
-        # def climbStairs(n, memo):
+        # Use recursion with memoization, O(n), O(n)
+        # def climbStairsMemo(n, memo):
         #     if n == 1:
         #         return 1
         #     elif n == 2:
         #         return 2
-        #     elif memo[n] != 0:
+        #     elif n in memo:
         #         return memo[n]
-        #     else:
-        #         count = climbStairs(n - 1, memo) + climbStairs(n - 2, memo)
-        #         memo[n] = count
-        #         return count
+        #     memo[n] = climbStairsMemo(n - 1, memo) + climbStairsMemo(n - 2, memo)
+        #     return memo[n]
         
-        # return climbStairs(n, [0] * (n + 1))
+        # return climbStairsMemo(n, {})
     
         
-        # Iterative memoization, O(n)
+        # Dynamically build memo map from previous results, O(n), O(n)
         # if n == 1:
         #     return 1
         # elif n == 2:
         #     return 2
-        # else:
-        #     memo = [0] * (n + 1)
-        #     memo[1] = 1
-        #     memo[2] = 2
-        #     for i in range(3, n + 1):
-        #         memo[i] = memo[i - 1] + memo[i - 2]
-        #     return memo[n]
+        
+        # memo = {}
+        # memo[1], memo[2] = 1, 2
+        # for i in range(3, n + 1):
+        #     memo[i] = memo[i - 1] + memo[i - 2]
+        
+        # return memo[n]
         
         
         # Recognize it's the Fibonacci sequence, O(n), O(1)
@@ -46,14 +44,12 @@ class Solution:
         #     return 1
         # elif n == 2:
         #     return 2
-        # else:
-        #     x = 1
-        #     y = 2
-        #     for i in range(3, n + 1):
-        #         z = x + y
-        #         x = y
-        #         y = z
-        #     return y
+        
+        # x, y = 1, 2
+        # for i in range(3, n + 1):
+        #     z = x + y
+        #     x, y = y, z
+        # return y
         
         
         # Use the Fibonacci formula, O(log n), O(1)

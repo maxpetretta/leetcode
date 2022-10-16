@@ -1,25 +1,25 @@
 class Solution:
     def hammingWeight(self, n: int) -> int:
-        # Brute force, O(1)
+        # Count the number of 1 bits, O(1), O(1)
         # count = 0
         # mask = 1
+        
         # for i in range(32):
-        #     if (n & mask) != 0:
+        #     if n & mask != 0:
         #         count += 1
         #     mask <<= 1
         # return count
         
         
-        # Use modulo operation, O(1)
+        # Use modulo operations, O(1), O(1)
         # count = 0
         # while n > 0:
-        #     if n % 2:
-        #         count += 1
+        #     count += n % 2
         #     n >>= 1
         # return count
 
         
-        # Skip over 0s and flip least-significant 1 bit, O(1)
+        # Skip over 0s and flip least-significant 1 bit, O(1), O(1)
         count = 0
         while n > 0:
             n &= (n - 1)

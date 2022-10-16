@@ -1,6 +1,6 @@
 class Solution:
     def getSum(self, a: int, b: int) -> int:
-        # Use bitwise operators, O(1)
+        # Use bitwise operators to sum, O(1), O(1)
         # x, y = abs(a), abs(b)
         # sign = 1 if a > 0 else -1
         
@@ -25,7 +25,7 @@ class Solution:
         # return sign * x
 
 
-        # Use python-specific operations, O(1)
+        # Use python-specific operations, O(1), O(1)
         mask = 0xFFFFFFFF
         
         while b != 0:

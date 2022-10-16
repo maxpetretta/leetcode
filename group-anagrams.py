@@ -1,45 +1,45 @@
-from typing import List
 from collections import defaultdict
+from typing import List
+
 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         # Brute force, O(n^2 log n), O(n)
-#         sortedStrs = []
-#         groups = []
+        # sortedStrs = []
+        # groups = []
         
-#         for s in strs:
-#             sortedStrs.append(sorted(s))
-        
-#         for i, s in enumerate(strs):
-#             indices = [index for index, string in enumerate(sortedStrs) if string == sortedStrs[i]]
-            
-#             group = []
-#             for j in indices:
-#                 group.append(strs[j])
-            
-#             if group not in groups:
-#                 groups.append(group)
-        
-#         return groups
-
-
-        # Simplified sorted strings, O(nk log k), O(nk)
-        # Where n = len(strs) and k = max(len(strs.values))
-        # sortedStrs = defaultdict(list)
         # for s in strs:
-        #     sortedStrs[tuple(sorted(s))].append(s)
-        # return sortedStrs.values()
+        #     sortedStrs.append(sorted(s))
+        
+        # for i, s in enumerate(strs):
+        #     indices = [index for index, string in enumerate(sortedStrs) if string == sortedStrs[i]]
+            
+        #     group = []
+        #     for j in indices:
+        #         group.append(strs[j])
+            
+        #     if group not in groups:
+        #         groups.append(group)
+        
+        # return groups
+
+
+        # Group words using a hashmap of sorted strings, O(nk log k), O(nk)
+        # Where n = len(strs) and k = max(len(strs.values))
+        # hashmap = defaultdict(list)
+        # for word in strs:
+        #     hashmap[tuple(sorted(word))].append(word)
+        # return hashmap.values()
 
     
-        # Use hash maps, O(nk), O(nk)
-        groups = defaultdict(list)
-        
-        for s in strs:
-            map = [0] * 26
-            for char in s:
-                map[ord(char) - ord('a')] += 1
-            groups[tuple(map)].append(s)
-        return groups.values()
+        # Hash the number of each char in the string, O(nk), O(nk)
+        answer = defaultdict(list)
+        for word in strs:
+            count = [0] * 26
+            for char in word:
+                count[ord(char) - ord('a')] += 1
+            answer[tuple(count)].append(word)
+        return answer.values()
 
 
 # Testcases

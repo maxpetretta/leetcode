@@ -1,7 +1,7 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        # Brute force, O(n ^ 3), O(n)
-        # def validSubstring(s):
+        # Brute force check every possible substring, O(n^3), O(n)
+        # def uniqueSubstring(s) -> bool:
         #     chars = set()
         #     for char in s:
         #         if char in chars:
@@ -10,29 +10,25 @@ class Solution:
         #             chars.add(char)
         #     return True
         
-        # length = len(s)
-        # maximum = 0
-        
+        # length, maximum = len(s), 0
         # for i in range(length):
         #     for j in range(i, length):
-        #         if validSubstring(s[i:j+1]):
+        #         if uniqueSubstring(s[i:j+1]):
         #             maximum = max(j - i + 1, maximum)
         # return maximum
         
         
-        # Store used characters, O(n), O(n)
-        maximum = 0
-        chars = []
+        # Use a set to track the substring in the sliding window, O(n), O(n)
+        chars, maximum = set(), 0
+        left = 0
         
-        for char in s:
-            if char in chars:
-                index = chars.index(char)
-                chars = chars[index+1:]
-                chars.append(char)
-            else:
-                chars.append(char)
-            if len(chars) > maximum:
-                maximum = len(chars)
+        for right in range(len(s)):
+            while s[right] in chars:
+                chars.remove(s[left])
+                left += 1
+            chars.add(s[right])
+            maximum = max(right - left + 1, maximum)
+            right += 1
         return maximum
 
 

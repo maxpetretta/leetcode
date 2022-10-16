@@ -1,8 +1,9 @@
 from typing import List
 
+
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
-        # Brute force, O(n log n)
+        # Brute force with sorting, O(n log n), O(1)
         # nums.sort()
         # length = len(nums)
         # for i in range(length):
@@ -11,22 +12,21 @@ class Solution:
         # return length
     
         
-        # Use set containment, O(n)
-        # numSet = set(nums)
-        # length = len(nums) + 1
-        # for num in range(length):
-        #     if num not in numSet:
-        #         return num
+        # Compare each num with a set of distinct values, O(n), O(n)
+        # distinct = set(nums)
+        # for i in range(len(nums) + 1):
+        #     if i not in distinct:
+        #         return i
         
         
-        # Use XOR, O(n)
+        # Use XOR to find the inverse, O(n), O(1)
         # value = len(nums)
         # for i, num in enumerate(nums):
         #     value ^= i ^ num
         # return value
         
         
-        # Gauss' formula, O(n)
+        # Recognize it's Gauss' formula, O(n), O(1)
         expected = len(nums) * (len(nums) + 1) // 2
         actual = sum(nums)
         return expected - actual

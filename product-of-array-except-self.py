@@ -1,15 +1,17 @@
 from typing import List
 
+
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        # Brute force, O(n^2), O(n)
-        # answer = [1] * len(nums)
-        # for i, numA in enumerate(nums):
-        #     for j, numB in enumerate(nums):
+        # Brute force multiply each product, O(n^2), O(1)
+        # length = len(nums)
+        # answer = [1] * length
+        # for i in range(length):
+        #     for j in range(length):
         #         if i == j:
         #             continue
         #         else:
-        #             answer[i] *= numB
+        #             answer[i] *= nums[j]
         # return answer
         
         
@@ -25,7 +27,7 @@ class Solution:
         # return answer
         
         
-        # Use the left/right method, but in constant space, O(n), O(1)
+        # Use the left/right method, but with only 1 array, O(n), O(1)
         length = len(nums)
         answer = [1] * length
         right = 1
