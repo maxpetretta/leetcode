@@ -1,33 +1,31 @@
 from typing import List
 
+
 class Solution:
     def findMin(self, nums: List[int]) -> int:
-        # Brute force, O(n), O(1)
-        # length = len(nums)
-        # minimum = nums[0]
-        # for i in range(1, length):
+        # Brute force search, O(n), O(1)
+        # minimum = float("inf")
+        # for i in range(len(nums)):
         #     minimum = min(nums[i], minimum)
         # return minimum
     
         
-        # Binary search, O(log n), O(1)
-        def binSearch(nums, start, end):
-            mid = start + (end - start) // 2
-            if nums[mid] > nums[mid + 1]:
-                return nums[mid + 1]
-            elif nums[mid] < nums[mid - 1]:
-                return nums[mid]
-            elif nums[mid] > nums[start]:
-                return binSearch(nums, mid + 1, end)
-            else:
-                return binSearch(nums, start, mid - 1)
+        # Optimize binary search for rotation, O(log n), O(1)
+        minimum = float("inf")
+        left, right = 0, len(nums) - 1
         
-        if len(nums) == 1:
-            return nums[0]
-        elif nums[0] < nums[-1]:
-            return nums[0]
-        else:
-            return binSearch(nums, 0, len(nums) - 1)
+        while left <= right:
+            if nums[left] < nums[right]:
+                minimum = min(nums[left], minimum)
+                break
+            mid = (left + right) // 2
+            minimum = min(nums[mid], minimum)
+            
+            if nums[left] <= nums[mid]:
+                left = mid + 1
+            else:
+                right = mid - 1
+        return minimum
 
 
 # Testcases

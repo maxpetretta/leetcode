@@ -1,4 +1,5 @@
-from collections import Counter
+from collections import Counter, defaultdict
+
 
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
@@ -20,32 +21,32 @@ class Solution:
         #             ans = sub
         # return ans
         
+        """
+        Build an occurrence hashmap of t.  Using a sliding window over s,
+        check if each character condition is met.  Return the smallest substring
+        O(m + n), O(m + n)
+        """
+        window, chars = defaultdict(int), Counter(t)
+        have, need = 0, len(chars)
+        left, answer = 0, ""
         
-        # Two pointers, O(m + n), O(m + n)
-        def contains(s, t):
-            for char in t.keys():
-                if t[char] > s[char]:
-                    return False
-            return True
-        
-        m, n = len(s), len(t)
-        l, r = 0, n-1
-        chars, window = Counter(t), Counter(s[l:r+1])
-        ans = ""
-        
-        while r < m:
-            sub = s[l:r+1]
-
-            if contains(window, chars):
-                window[s[l]] = window.get(s[l], 0) - 1
-                l += 1
-                if len(sub) < len(ans) or ans == "":
-                    ans = sub
-            else:
-                r += 1
-                if r < m:
-                    window[s[r]] = window.get(s[r], 0) + 1
-        return ans
+        for right in range(len(s)):
+            char = s[right]
+            window[char] += 1
+            if char in chars and window[char] == chars[char]:
+                have += 1
+            
+            while have == need:
+                # Check for new smallest substring
+                if (right - left + 1) < len(answer) or answer == "":
+                    answer = s[left:right + 1]
+                
+                # Shift window left
+                window[s[left]] -= 1
+                if s[left] in chars and window[s[left]] < chars[s[left]]:
+                    have -= 1
+                left += 1
+        return answer
         
 
 # Testcases

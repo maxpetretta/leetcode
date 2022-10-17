@@ -1,8 +1,9 @@
 from typing import List
 
+
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        # Brute force, O(n), O(1)
+        # Brute force search, O(n), O(1)
         # index = -1
         # for i in range(len(nums)):
         #     if nums[i] == target:
@@ -10,25 +11,28 @@ class Solution:
         # return index
     
     
-        # Binary search, O(log n), O(1)
-        def binSearch(nums, target, start, end):
-            mid = start + (end - start) // 2
+        # Optimize binary search to account for the pivot, O(log n), O(1)
+        left, right = 0, len(nums) - 1
+        
+        while left <= right:
+            mid = (left + right) // 2
             if nums[mid] == target:
                 return mid
-            elif start > end:
-                return -1
-            elif nums[mid] >= nums[start]:
-                if nums[start] <= target < nums[mid]:
-                    return binSearch(nums, target, start, mid - 1)
+            
+            # Left side
+            elif nums[left] <= nums[mid]:
+                if nums[left] <= target < nums[mid]:
+                    right = mid - 1
                 else:
-                    return binSearch(nums, target, mid + 1, end)
+                    left = mid + 1
+            
+            # Right side
             else:
-                if nums[mid] < target <= nums[end]:
-                    return binSearch(nums, target, mid + 1, end)
-                else: 
-                    return binSearch(nums, target, start, mid - 1)
-        
-        return binSearch(nums, target, 0, len(nums) - 1)
+                if nums[mid] < target <= nums[right]:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+        return -1
 
 
 # Testcases
