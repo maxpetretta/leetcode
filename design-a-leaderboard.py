@@ -14,12 +14,15 @@ class Leaderboard:
         # return sum(sorted(self.scores.values(), reverse=True)[:K])
         
         # Sort the scores using a heap, O(n log k)
-        heap = []
-        for score in self.scores.values():
-            heapq.heappush(heap, score)
-            if len(heap) > K:
-                heapq.heappop(heap)
-        return sum(heap)
+        # heap = []
+        # for score in self.scores.values():
+        #     heapq.heappush(heap, score)
+        #     if len(heap) > K:
+        #         heapq.heappop(heap)
+        # return sum(heap)
+
+        # One-liner of the above
+        return sum(heapq.nlargest(K, self.scores.values()))
 
     def reset(self, playerId: int) -> None:
         del self.scores[playerId]
