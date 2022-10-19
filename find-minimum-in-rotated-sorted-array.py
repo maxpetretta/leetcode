@@ -22,9 +22,9 @@ class Solution:
             minimum = min(nums[mid], minimum)
             
             if nums[left] <= nums[mid]:
-                left = mid + 1
+                left = mid + 1      # Search right
             else:
-                right = mid - 1
+                right = mid - 1     # Search left
         return minimum
 
 

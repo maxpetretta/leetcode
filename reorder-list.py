@@ -9,55 +9,48 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        # Brute force, find last node at each position, O(n^2 - ni), O(1)
+        # For each odd numbered node, cast ahead to get the last node, O(n^2 - ni), O(1)
         # node = head
         # if node.next is None:
         #     return
         
         # while node.next.next:
-        #     ptr = node
-        #     after = node.next
+        #     ptr, after = node, node.next
             
-        #     while ptr.next:
-        #         curr = ptr.next
-        #         if curr.next is None:
-        #             node.next = curr
-        #             node.next.next = after
-        #             ptr.next = None
-        #             break
+        #     # Move ptr to second to last position
+        #     while ptr.next.next:
         #         ptr = ptr.next
+
+        #     # Move last node to front of list
+        #     last, ptr.next = ptr.next, None
+        #     node.next, last.next = last, after
             
-        #     node = after
-        #     if node.next is None:
-        #         return
+        #     # Update the current node
+        #     node = node.next.next
         
         
-        # Use two pointers, reverse second half, O(n), O(1)
+        # Merge the first half of list with a reversed second half, O(n), O(1)
         
-        # Find the middle
+        # Find the middle of the list
         slow = fast = head
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
         
-        # Reverse second half
+        # Reverse second half of list
         prev, curr = None, slow
         while curr:
             temp = curr.next
             curr.next = prev
-            prev = curr
-            curr = temp
+            prev, curr = curr, temp
         
-        # Merge lists together
+        
+        # Merge the two halves
         first, second = head, prev
         while second.next:
-            temp = first.next
-            first.next = second
-            first = temp
-            
-            temp = second.next
-            second.next = first
-            second = temp
+            first.next, first = second, first.next
+            second.next, second = first, second.next
+        
         
 # Testcases
 # [1,2,3,4]
