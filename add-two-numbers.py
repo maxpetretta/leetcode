@@ -7,11 +7,11 @@ class ListNode:
         self.val = val
         self.next = next
 
-        
+
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         # Iterate over the list, summing the nodes in place, O(max(n)), O(max(n))
-        carry, total = 0, 0
+        carry = 0
         head = current = ListNode()
         while l1 or l2 or carry:
             # Handle empty values
