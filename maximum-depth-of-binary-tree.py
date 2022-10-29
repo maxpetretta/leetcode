@@ -21,17 +21,15 @@ class Solution:
         
         # Use BFS (iteration) to count depth of children, O(n), O(log n)
         stack = [[root, 1]]
-        ans = 0
+        answer = 0
 
         while stack:
             node, depth = stack.pop()
-
             if node:
-              ans = max(ans, depth)
+              answer = max(answer, depth)
               stack.append([node.left, depth + 1])
               stack.append([node.right, depth + 1])
-        
-        return ans
+        return answer
         
 
 # Testcases
